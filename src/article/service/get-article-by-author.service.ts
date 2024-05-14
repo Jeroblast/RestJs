@@ -6,7 +6,7 @@ import { ArticleUpdateDto } from '../dto/article-update.dto';
 import { ArticleCreateDto } from '../dto/article-create.dto';
 
 Injectable();
-export class ArticleService {
+export class GetArticleByAuthorService {
   constructor(
     // on "injecte" le repository de l'entité Article
     // dans la propriété articleRepository de la classe ArticleService
@@ -16,21 +16,6 @@ export class ArticleService {
     private readonly articleRepository: Repository<Article>,
   ) {}
 
-  async getAllarticles() {
-    return await this.articleRepository.find();
-  }
-
-  async createArticle(data: ArticleCreateDto) {
-    try {
-      return this.articleRepository.save(data);
-    } catch (error) {
-      console.log(error);
-      throw new Error('Error while creating article');
-    }
-  }
-  async getOneArticleById(id: number) {
-    return await this.articleRepository.findOneBy({ id });
-  }
 
   //C'est une méthode asynchrone
   //Await permettre d'attendre le processus de la requête
@@ -40,18 +25,6 @@ export class ArticleService {
     return await this.articleRepository.find({ where: { author } });
   }
 
-  async updateArticle(id: number, data: ArticleUpdateDto) {
-    // on récupère l'article ciblé
-    const article = await this.articleRepository.findOneBy({ id });
-    // on "merge" les données du body de la requête
-    // avec les données déjà présentes dans l'article
-    const articleUpdate = { ...article, ...data };
-    // on sauvegarde l'article mis à jour
-    await this.articleRepository.save(articleUpdate);
 
-    return articleUpdate;
-  }
-  async deleteArticle(id: number) {
-    return await this.articleRepository.delete(id);
-  }
+
 }
