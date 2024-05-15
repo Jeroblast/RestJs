@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from "../entity/user.entity";
+import { Users } from "../entity/user.entity";
 
 
 Injectable();
@@ -11,8 +11,8 @@ export class GetAllUSersService {
     // dans la propriété articleRepository de la classe userService
     // pour pouvoir ensuite utiliser les méthodes du repository
     // dans les méthodes de notre service
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
+    @InjectRepository(Users)
+    private readonly userRepository: Repository<Users>,
   ) {}
 
   async getAllUsers() {

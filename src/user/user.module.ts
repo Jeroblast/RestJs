@@ -1,6 +1,6 @@
 import { Delete, Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { User } from "./entity/user.entity";
+import { Users } from "./entity/user.entity";
 import { CreateUserService } from "./usecase/create-user.service";
 import { UserController } from "./controller/user.controller";
 import { PasswordHasherService } from "./utils/password-hasher.service";
@@ -13,7 +13,7 @@ import { UpdateUserPasswordService } from "./usecase/update-password-user.servic
 
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
+  imports: [TypeOrmModule.forFeature([Users])],
   controllers: [UserController],
   providers: [PasswordHasherService,
     CreateUserService,

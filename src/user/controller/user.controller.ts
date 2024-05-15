@@ -29,7 +29,7 @@ export class UserController {
   constructor(
     private readonly createUserService: CreateUserService,
     private readonly updateUserService: UpdateUserService,
-    private readonly updateUserPasswordService: UpdateUserPasswordService, // injection de dépendance par constructeur
+    private readonly updateUserPasswordService: UpdateUserPasswordService,
     private readonly getAllUsersService: GetAllUSersService,
     private readonly getUserByIdService: GetUserByIdService,
     private readonly getUserByCityService: GetUserByCityService,

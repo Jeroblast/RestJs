@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 
 import { PasswordHasherServiceInterface } from '../utils/password-hasher.service.interface';
-import { User } from '../entity/user.entity';
+import { Users } from '../entity/user.entity';
 import { Repository } from 'typeorm';
 import { UserCreateDto } from "../dto/user-create.dto";
 import { PasswordHasherService } from "../utils/password-hasher.service";
@@ -11,8 +11,8 @@ import { PasswordHasherService } from "../utils/password-hasher.service";
 @Injectable()
 export class CreateUserService{
   constructor(
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
+    @InjectRepository(Users)
+    private readonly userRepository: Repository<Users>,
    private readonly passwordHasherService: PasswordHasherService,
   ) {
   }
