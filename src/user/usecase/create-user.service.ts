@@ -6,13 +6,14 @@ import { PasswordHasherServiceInterface } from '../utils/password-hasher.service
 import { User } from '../entity/user.entity';
 import { Repository } from 'typeorm';
 import { UserCreateDto } from "../dto/user-create.dto";
+import { PasswordHasherService } from "../utils/password-hasher.service";
 
 @Injectable()
 export class CreateUserService{
   constructor(
-    //@InjectRepository(User)
-    //private readonly userRepository: Repository<User>,
-    private readonly passwordHasherService: PasswordHasherServiceInterface,
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
+   private readonly passwordHasherService: PasswordHasherService,
   ) {
   }
 
@@ -24,7 +25,7 @@ export class CreateUserService{
 
     try{
       console.log(userToPersist)
-      //return this.userRepository.save(userToPersist);
+      return this.userRepository.save(userToPersist);
     } catch (error) {
       console.log(error);
       throw new Error('Error while creating user');
