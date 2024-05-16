@@ -32,9 +32,8 @@ export class Orders {
   @Column({ type: "varchar" })
   updatedAt: Date;
 
-
   @Column({ type: "varchar" ,nullable: true })
-  paidAt: string;
+  paidAt: Date;
 
   @Column({ type: "varchar" })
   status: string;
@@ -47,6 +46,12 @@ export class Orders {
 
   @Column({ type: "int" })
   total: number;
+
+  pay() {
+    this.updatedAt = new Date();
+    this.paidAt = new Date();
+    this.status = "paid";
+  }
 
 
 }

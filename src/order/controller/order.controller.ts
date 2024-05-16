@@ -12,6 +12,8 @@ import { GetAllOrdersService } from "../usecase/get-all-orders.service";
 import { CreateArticleService } from "../../article/service/create-article.service";
 import { CreateOrderService } from "../usecase/create-orders.service";
 import { CreateOrderDto } from "../dto/create-order.dto";
+import { UserPasswordUpdateDto } from "../../user/dto/user-password.dto";
+import { UpdateOrderPaidAtService } from "../usecase/update-order-paidat.service";
 
 
 
@@ -23,6 +25,7 @@ export class OrderController {
   constructor(
     private readonly createOrderService: CreateOrderService,
     private readonly getAllOrdersService: GetAllOrdersService,
+    private readonly updatePaidDateService: UpdateOrderPaidAtService
 
   ) {
   }
@@ -41,6 +44,14 @@ export class OrderController {
   createOrder(@Body() data: CreateOrderDto) {
     console.log(data);
     return this.createOrderService.createOrder(data);
+  }
+
+  @Put(':id/pay')
+
+  updateOrderPaid(
+    @Param('id', ParseIntPipe) id: number,
+  ) {
+    return this.updatePaidDateService.updateOrderPaid(id);
   }
 
 
