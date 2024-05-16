@@ -1,9 +1,9 @@
 import { Delete, Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { OrderController } from "./controller/order.controller";
-import { Orders } from "./Entity/orders.entity";
-import { CreateOrderService } from "./uecase/create-orders.service";
-import { GetAllOrdersService } from "./uecase/get-all-orders.service";
+import { Orders } from "./entity/orders.entity";
+import { CreateOrderService } from "./usecase/create-orders.service";
+import { GetAllOrdersService } from "./usecase/get-all-orders.service";
 
 
 

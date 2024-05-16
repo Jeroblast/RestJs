@@ -1,6 +1,6 @@
 import { CreateOrderDto } from "../dto/create-order.dto";
 import { Repository } from "typeorm";
-import { Orders } from "../Entity/orders.entity";
+import { Orders } from "../entity/orders.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Users } from "../../user/entity/user.entity";
 

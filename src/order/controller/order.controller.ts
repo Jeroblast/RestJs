@@ -8,9 +8,9 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { GetAllOrdersService } from "../uecase/get-all-orders.service";
+import { GetAllOrdersService } from "../usecase/get-all-orders.service";
 import { CreateArticleService } from "../../article/service/create-article.service";
-import { CreateOrderService } from "../uecase/create-orders.service";
+import { CreateOrderService } from "../usecase/create-orders.service";
 import { CreateOrderDto } from "../dto/create-order.dto";
 
 
