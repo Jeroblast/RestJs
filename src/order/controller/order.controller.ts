@@ -9,10 +9,8 @@ import {
   Put,
 } from '@nestjs/common';
 import { GetAllOrdersService } from "../usecase/get-all-orders.service";
-import { CreateArticleService } from "../../article/service/create-article.service";
 import { CreateOrderService } from "../usecase/create-orders.service";
 import { CreateOrderDto } from "../dto/create-order.dto";
-import { UserPasswordUpdateDto } from "../../user/dto/user-password.dto";
 import { UpdateOrderPaidAtService } from "../usecase/update-order-paidat.service";
 
 
