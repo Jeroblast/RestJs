@@ -1,7 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { CreateOrderDto } from "../dto/create-order.dto";
 import { OrderShippingUpdateDto } from "../dto/update-order-shipping.dto";
 import { OrderInvoiceUpdateDto } from "../dto/update-order-invoice.dto";
+import { OrderItems } from "./order-item.entity";
 
 @Entity()
 export class Orders {
@@ -20,7 +21,22 @@ export class Orders {
         throw new Error("trop d'items");
       }
 
-      this.items = createOrderData.items;
+      this.items = [];
+
+      for (const product of createOrderData.items) {
+        const existingItem = this.items.find(item => item.product === product);
+
+        if (existingItem) {
+          existingItem.quantity++;
+        } else {
+          const newItem = new OrderItems();
+          newItem.product = product;
+          newItem.quantity = 1;
+          newItem.price = 10;
+          this.items.push(newItem);
+        }
+      }
+
       this.creatdAt = new Date();
       this.updatedAt = new Date();
       this.custommers = "PepaPig";
@@ -55,8 +71,8 @@ export class Orders {
   @Column({ type: "varchar" })
   custommers: string;
 
-  @Column({ type: "json" })
-  items: string[];
+  @OneToMany(() => OrderItems, (orderItem) => orderItem.product)
+  items: OrderItems[];
 
   @Column({ type: "int" })
   total: number;

@@ -7,11 +7,12 @@ import { GetAllOrdersService } from "./usecase/get-all-orders.service";
 import { UpdateOrderPaidAtService } from "./usecase/update-order-paidat.service";
 import { UpdateOrderAddressService } from "./usecase/update-order-address.service";
 import { UpdateOrderInvoiceAddressService } from "./usecase/update-order-invoice-address.service";
+import { OrderItems } from "./entity/order-item.entity";
 
 
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Orders])],
+  imports: [TypeOrmModule.forFeature([Orders,OrderItems])],
   controllers: [OrderController],
   providers: [CreateOrderService,
     GetAllOrdersService,
