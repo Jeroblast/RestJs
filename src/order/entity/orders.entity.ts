@@ -71,7 +71,7 @@ export class Orders {
   @Column({ type: "varchar" })
   custommers: string;
 
-  @OneToMany(() => OrderItems, (orderItem) => orderItem.product)
+  @OneToMany(() => OrderItems, (orderItem) => orderItem.product,{nullable:true, cascade: true})
   items: OrderItems[];
 
   @Column({ type: "int" })
