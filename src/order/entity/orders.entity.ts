@@ -6,6 +6,13 @@ import { OrderInvoiceUpdateDto } from "../dto/update-order-invoice.dto";
 @Entity()
 export class Orders {
 
+  static CartStatus = {
+    cart: "cart",
+    paid: "paid",
+    ShippingAddressSet: "ShippingAddressSet",
+    InvoiceAddressSet: "InvoiceAddressSet",
+  }
+
   constructor(createOrderData?: CreateOrderDto) {
 
     if (createOrderData) {
@@ -17,7 +24,7 @@ export class Orders {
       this.creatdAt = new Date();
       this.updatedAt = new Date();
       this.custommers = "PepaPig";
-      this.status = "cart";
+      this.status = Orders.CartStatus.cart
       this.paidAt = null;
       this.total = 10 * createOrderData.items.length;
       this.shipping_address = null;
