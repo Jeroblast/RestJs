@@ -12,6 +12,9 @@ export class Users {
   firstname: string;
 
   @Column({ type: 'varchar' })
+  username: string;
+
+  @Column({ type: 'varchar' })
   lastname: string;
 
   @Column({ type: 'int' })

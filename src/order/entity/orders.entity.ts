@@ -27,12 +27,9 @@ export class Orders {
         const existingItem = this.items.find(item => item.product === product);
 
         if (existingItem) {
-          existingItem.quantity++;
+          existingItem.incrementQuantity();
         } else {
-          const newItem = new OrderItems();
-          newItem.product = product;
-          newItem.quantity = 1;
-          newItem.price = 10;
+          const newItem = new OrderItems(product);
           this.items.push(newItem);
         }
       }

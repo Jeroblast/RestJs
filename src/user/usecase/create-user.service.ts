@@ -24,10 +24,9 @@ export class CreateUserService{
     };
 
     try{
-      console.log(userToPersist)
+
       return this.userRepository.save(userToPersist);
     } catch (error) {
-      console.log(error);
       throw new Error('Error while creating user');
     }
   }
