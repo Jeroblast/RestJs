@@ -5,8 +5,8 @@ import {
   Param,
   ParseIntPipe,
   Post,
-  Put,
-} from '@nestjs/common';
+  Put, UseGuards
+} from "@nestjs/common";
 import { GetAllOrdersService } from "../usecase/get-all-orders.service";
 import { CreateOrderService } from "../usecase/create-orders.service";
 import { CreateOrderDto } from "../dto/create-order.dto";
@@ -16,6 +16,7 @@ import { UserPasswordUpdateDto } from "../../user/dto/user-password.dto";
 import { OrderShippingUpdateDto } from "../dto/update-order-shipping.dto";
 import { OrderInvoiceUpdateDto } from "../dto/update-order-invoice.dto";
 import { UpdateOrderInvoiceAddressService } from "../usecase/update-order-invoice-address.service";
+import { AuthGuard } from "../../auth/auth-guard";
 
 
 
@@ -35,11 +36,15 @@ export class OrderController {
   }
 
   @Get()
+  @UseGuards(AuthGuard)
+
   getAllOrders() {
     return this.getAllOrdersService.getAllOrders();
   }
 
   @Post()
+  @UseGuards(AuthGuard)
+
   // on utilise le décorateur @Body pour récupérer
   // les données du body de la requête
   // on valide les données du body de la requête
@@ -51,6 +56,8 @@ export class OrderController {
   }
 
   @Put(':id/pay')
+  @UseGuards(AuthGuard)
+
 
   updateOrderPaid(
     @Param('id', ParseIntPipe) id: number,
@@ -59,6 +66,8 @@ export class OrderController {
   }
 
   @Put('/:id/address')
+  @UseGuards(AuthGuard)
+
 
   updateOrderAddress(
     @Param('id', ParseIntPipe) id: number,
@@ -68,6 +77,8 @@ export class OrderController {
   }
 
   @Put('/:id/invoiceAddress')
+  @UseGuards(AuthGuard)
+
 
   updateOrderInvoiceAddress(
     @Param('id', ParseIntPipe) id: number,
